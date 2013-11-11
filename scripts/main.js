@@ -131,9 +131,7 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
     };
 
     NAC.fn.deselectCell = function( cell ) {
-      if ( cell ) {
-        cell.classList.remove( this.IS_SELECTED_CLASS );
-      }
+      cell.classList.remove( this.IS_SELECTED_CLASS );
     };
 
     NAC.fn.selectCell = function( cell ) {
