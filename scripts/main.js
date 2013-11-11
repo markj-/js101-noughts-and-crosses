@@ -94,9 +94,9 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
           if ( this.cellIsPopulated( cell ) ) {
             return false;
           }
-          this.deselectCurrentlySelected();
+          this.deselectCurrentlySelectedCell();
           this.selectCell( cell );
-          this.setCurrentlySelected( cell );
+          this.setCurrentlySelectedCell( cell );
         }.bind( this ), false );
       }.bind( this ) );
 
@@ -117,17 +117,17 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
     };
 
     NAC.fn.checkKeyboardInput = function( e ) {
-      if ( this.keyWasEnter( e.keyCode ) && this.currentlySelected ) {
-        this.populateCurrentlySelected();
+      if ( this.keyWasEnter( e.keyCode ) && this.currentlySelectedCell ) {
+        this.populateCurrentlySelectedCell();
         this.switchPlayer();
         this.setCurrentPlayerText();
-        this.deselectCurrentlySelected();
+        this.deselectCurrentlySelectedCell();
       }
     };
 
-    NAC.fn.deselectCurrentlySelected = function() {
-      this.deselectCell( this.currentlySelected );
-      this.currentlySelected = null;
+    NAC.fn.deselectCurrentlySelectedCell = function() {
+      this.deselectCell( this.currentlySelectedCell );
+      this.currentlySelectedCell = null;
     };
 
     NAC.fn.deselectCell = function( cell ) {
@@ -138,8 +138,8 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
       cell.classList.add( this.IS_SELECTED_CLASS );
     };
 
-    NAC.fn.populateCurrentlySelected = function() {
-      this.populateCell( this.currentlySelected, this.currentPlayer.icon );
+    NAC.fn.populateCurrentlySelectedCell = function() {
+      this.populateCell( this.currentlySelectedCell, this.currentPlayer.icon );
     };
 
     NAC.fn.populateCell = function( cell, text ) {
@@ -154,8 +154,8 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
       return cell.innerText !== '';
     };
 
-    NAC.fn.setCurrentlySelected = function( cell ) {
-      this.currentlySelected = cell;
+    NAC.fn.setCurrentlySelectedCell = function( cell ) {
+      this.currentlySelectedCell = cell;
     };
 
     NAC.fn.reset = function() {
