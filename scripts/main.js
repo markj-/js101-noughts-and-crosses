@@ -161,7 +161,11 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
     };
 
     NAC.fn.reset = function() {
-      Array.prototype.forEach.call( this.ui.cells, this.clearCell.bind( this ), false);
+      Array.prototype.forEach.call(
+        this.ui.cells,
+        this.clearCell.bind( this ),
+        false
+      );
     };
 
     NAC.fn.switchPlayer = function() {
