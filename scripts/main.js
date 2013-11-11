@@ -10,6 +10,8 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
       this.ui = {};
       this.errors = [];
 
+      this.currentlySelectedCell = null;
+
       this.players = [
         {
           name: 'Noughts',
@@ -126,6 +128,9 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
     };
 
     NAC.fn.deselectCurrentlySelectedCell = function() {
+      if ( this.currentlySelectedCell === null ) {
+        return false;
+      }
       this.deselectCell( this.currentlySelectedCell );
       this.currentlySelectedCell = null;
     };
