@@ -117,21 +117,17 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
     };
 
     NAC.fn.checkKeyboardInput = function( e ) {
-      if ( this.keyWasEnter( e.keyCode ) ) {
+      if ( this.keyWasEnter( e.keyCode ) && this.currentlySelected ) {
         this.populateCurrentlySelected();
-        if ( this.currentlySelected ) {
-          this.switchPlayer();
-          this.setCurrentPlayerText();
-        }
+        this.switchPlayer();
+        this.setCurrentPlayerText();
         this.deselectCurrentlySelected();
       }
     };
 
     NAC.fn.deselectCurrentlySelected = function() {
-      if ( this.currentlySelected ) {
-        this.deselectCell( this.currentlySelected );
-        this.currentlySelected = null;
-      }
+      this.deselectCell( this.currentlySelected );
+      this.currentlySelected = null;
     };
 
     NAC.fn.deselectCell = function( cell ) {
@@ -145,9 +141,7 @@ window.log=function(){log.history=log.history||[];log.history.push(arguments);if
     };
 
     NAC.fn.populateCurrentlySelected = function() {
-      if ( this.currentlySelected ) {
-        this.populateCell( this.currentlySelected, this.currentPlayer.icon );
-      }
+      this.populateCell( this.currentlySelected, this.currentPlayer.icon );
     };
 
     NAC.fn.populateCell = function( cell, text ) {
